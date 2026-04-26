@@ -10,7 +10,7 @@ This document outlines the commercial case, operational framework, and business 
 
 **Current State:**
 - 67% of FreshBox customers churn within 6 months
-- Annual revenue loss: **GBP 8 million** (5,360 customers × GBP 1,500 LTV)
+- Annual revenue loss: **GBP 2.14 million** (5,360 customers × GBP 400 LTV)
 - Retention team operates reactively: customers churn before mitigation occurs
 - No early warning system for at-risk segments
 
@@ -26,11 +26,11 @@ This document outlines the commercial case, operational framework, and business 
 | Metric | Value |
 |--------|-------|
 | **Customers Saved** | 200-300 churners prevented |
-| **Revenue Protected** | GBP 300-450K |
+| **Revenue Protected** | GBP 80-120K |
 | **Retention Investment** | GBP 50K |
-| **Net Year 1 Benefit** | GBP 250-400K |
-| **Return on Investment** | 5-8X |
-| **Break-Even Timeline** | Week 3 |
+| **Net Year 1 Benefit** | GBP 30-70K |
+| **Return on Investment** | 1.6-2.4X |
+| **Break-Even Timeline** | Week 8-12 |
 
 ---
 
@@ -41,8 +41,8 @@ This document outlines the commercial case, operational framework, and business 
 | Item | Value | Basis |
 |------|-------|-------|
 | **Annual churn customers** | 5,360 | 67% of 8,000 base |
-| **Customer Lifetime Value (LTV)** | GBP 1,500 | Average across all segments |
-| **Annual revenue loss to churn** | GBP 8.04M | 5,360 × GBP 1,500 |
+| **Customer Lifetime Value (LTV)** | GBP 400 | Calculated from actual customer spend (avg 12.79 weeks @ £29/order) |
+| **Annual revenue loss to churn** | GBP 2.14M | 5,360 × GBP 400 |
 | **Weekly churners** | ~103 customers | 5,360 ÷ 52 weeks |
 
 ### Intervention Economics
@@ -73,10 +73,10 @@ Wait — recalculate on realistic weekly basis:
 
 **Revised Year 1 Impact:**
 - **Customers saved: 200-300** (conservative estimate, accounting for saturation and overlap)
-- **Revenue protected: GBP 300-450K** (200-300 × GBP 1,500 LTV)
+- **Revenue protected: GBP 80-120K** (200-300 × GBP 400 LTV)
 - **Retention spend: GBP 50K** (budget for outreach, offers, resources)
-- **Net benefit: GBP 250-400K**
-- **ROI: 5-8X**
+- **Net benefit: GBP 30-70K**
+- **ROI: 1.6-2.4X**
 
 ---
 
@@ -299,10 +299,11 @@ The model identifies four distinct customer types for targeted retention tactics
 
 | Year | Churners (Base) | Churners (Prevented) | Revenue Protected | Investment | Net Benefit | ROI |
 |------|-----------------|---------------------|-------------------|------------|-------------|-----|
-| **Year 1** | 5,360 | 200-300 | GBP 300-450K | GBP 50K | GBP 250-400K | **5-8X** |
-| **Year 2+** | ~5,000 | 250-400 | GBP 375-600K | GBP 50K | GBP 325-550K | **6.5-11X** |
+| **Year 1** | 5,360 | 200-300 | GBP 80-120K | GBP 50K | GBP 30-70K | **1.6-2.4X** |
+| **Year 2+** | ~5,000 | 250-400 | GBP 100-160K | GBP 50K | GBP 50-110K | **2-3.2X** |
 
 **Notes:**
+- LTV corrected to £400 based on actual customer data (avg churn at 12.79 weeks, £29 AOV)
 - Year 2+ assumes continued model investment (retraining, monitoring, incremental improvements)
 - Churners decline due to product improvements informed by churn drivers (flywheel effect)
 - ROI compounds as machine learning captures increasingly nuanced patterns
