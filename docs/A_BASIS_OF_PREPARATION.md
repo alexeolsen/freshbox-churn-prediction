@@ -256,8 +256,8 @@ After all preparation steps, the clean dataset is ready for feature engineering:
 | **Total customers** | 1,500 (80/20 train/test split) |
 | **Churned customers in test set** | 202 out of 300 |
 | **Active customers in test set** | 98 |
-| **Weekly activity records** | 155,871 (156,000 − 129 post-churn rows) |
-| **Support ticket records** | 2,005 (2,100 − 95 post-churn rows) |
+| **Weekly activity records** | 57,077 (57,208 − 131 post-churn rows) |
+| **Support ticket records** | 1,994 (2,093 − 99 post-churn rows) |
 | **Data leakage risk** | **ZERO** (all post-churn data removed) |
 | **Features engineered** | 47 features across 6 categories |
 
@@ -271,7 +271,7 @@ After all preparation steps, the clean dataset is ready for feature engineering:
 
 ✓ **No Duplicates:** Customer and ticket IDs are unique
 
-✓ **No Data Leakage:** 224 post-churn records removed; zero post-churn data remains in final dataset
+✓ **No Data Leakage:** 230 post-churn records removed; zero post-churn data remains in final dataset
 
 ✓ **Business Logic:** Churn rate (67%) aligns with business brief expectation (65–70%)
 
@@ -775,7 +775,7 @@ This phase answers four questions:
 **XGBoost vs Logistic:**
 - Catches **2 additional churners** (202 vs 200)
 - Creates **3 additional false alarms** (+3 false positives)
-- Net benefit: **2 × GBP 1,500 − 3 × GBP 50 = GBP 2,850 year 1**
+- Net benefit: **2 × GBP 400 − 3 × GBP 50 = GBP 650 year 1**
 - **Verdict:** XGBoost upgrade is small benefit; justifiable only if retention team capacity exists for slightly higher volume and perfect recall is critical
 
 ### Two-Phase Deployment Recommendation
@@ -790,7 +790,7 @@ This phase answers four questions:
 | **Expected Actuals** | Of 5,000 flagged, ~4,984 are true positives (99.5% precision) |
 | **Retention Team Load** | ~5,000 contacts/week (manageable with current team of 10–12) |
 | **Expected Impact** | Catch ~200 of the ~202 churners in any given week (99% recall) |
-| **Expected Revenue Protection** | GBP 300–450K in Year 1 (varies by contact success rate 15–25%) |
+| **Expected Revenue Protection** | GBP 80–120K in Year 1 (200-300 customers × £400 LTV) |
 | **Key Advantages** | Interpretable, auditable, fast, small footprint, proven performance |
 | **Risks** | Will miss ~2 churners/week (0.001% miss rate on full base) |
 

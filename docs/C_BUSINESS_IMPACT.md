@@ -118,7 +118,7 @@ Wait — recalculate on realistic weekly basis:
 - Perfect recall (100%) — catches ALL churners, zero misses
 - Non-linear patterns — captures complex interactions (e.g., "low rating + declining frequency" is higher risk than sum)
 - SHAP explanations — local interpretability per customer
-- Trade-off: 4 false positives vs logistic's 1 (net gain of GBP 2,850/year)
+- Trade-off: 3 extra false positives cost GBP 150, vs catching 2 extra churners worth GBP 800 = net gain of GBP 650/year
 
 **A/B Test Design (Months 2-3):**
 - 50% of flagged customers routed to Logistic model
@@ -281,7 +281,7 @@ The model identifies four distinct customer types for targeted retention tactics
 
 ### Business Outcomes
 - ✅ Save 200-300 customers in Year 1 (vs ~103 churned per week)
-- ✅ Protect GBP 300-450K revenue
+- ✅ Protect GBP 80-120K revenue (200-300 customers saved × £400 LTV)
 - ✅ Achieve ≥15% overall save rate (weighted across all tiers)
 - ✅ Tier 1 save rate ≥20% (high-risk cohort)
 
@@ -293,7 +293,7 @@ The model identifies four distinct customer types for targeted retention tactics
 ### Stakeholder Alignment
 - ✅ Product team uses churn drivers to inform roadmap (quarterly)
 - ✅ Operations team resolves systemic issues within 48 hours of model alert
-- ✅ CFO validates ROI projections (GBP 300-450K protection)
+- ✅ CFO validates ROI projections (GBP 80-120K protection)
 
 ---
 

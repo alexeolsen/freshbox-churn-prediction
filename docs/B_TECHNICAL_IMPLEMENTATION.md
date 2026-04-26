@@ -347,9 +347,9 @@ def load_raw_data():
     """Load 4 CSV files from data/raw/ directory.
     
     Returns:
-        customers (DataFrame): 8,000 rows, 12 columns (customer_id, signup_date, churn_date, etc.)
-        weekly_activity (DataFrame): 156,000 rows, 8 columns (customer_id, week_commencing, orders, etc.)
-        support_tickets (DataFrame): 2,100 rows, 6 columns (customer_id, ticket_date, etc.)
+        customers (DataFrame): 1,500 rows, 12 columns (customer_id, signup_date, churn_date, etc.)
+        weekly_activity (DataFrame): 57,208 rows, 8 columns (customer_id, week_commencing, orders, etc.)
+        support_tickets (DataFrame): 2,093 rows, 6 columns (customer_id, ticket_date, etc.)
         calendar (DataFrame): 445 rows, 3 columns (week reference dates)
     """
 ```
@@ -652,7 +652,7 @@ def create_deployment_recommendation():
     Phase 1: Deploy Logistic Regression
         - Rationale: F1 0.993, 99.5% precision, interpretable, fast
         - Timeline: Week 1 deployment
-        - Expected Year 1 impact: GBP 300-450K revenue protected
+        - Expected Year 1 impact: GBP 80-120K revenue protected
     
     Phase 2: Upgrade to XGBoost (conditional)
         - Trigger: If Tier 1 save rate ≥ 20% after Month 1
