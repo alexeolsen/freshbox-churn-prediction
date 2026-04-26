@@ -56,7 +56,7 @@ PHASE 2: Data Loading & Validation (src/shared/phase_0_1_data_prep.py)
     ↓ Load 4 CSV files, fix 12 anomalies, standardise dates/flags
     
 PHASE 3: Data Leakage Prevention (src/phase_3/phase_3_1_customer_base.py)
-    ↓ Filter 224 post-churn records (CRITICAL for model integrity)
+    ↓ Filter 230 post-churn records (CRITICAL for model integrity)
     
 PHASE 4: Feature Engineering (src/phase_4/phase_4_1_features.py)
     ↓ Engineer 47 features across 6 categories
@@ -289,7 +289,7 @@ Delivery: Rank by probability → Hand to retention team (Tier 1/2/3 by risk sco
 - 5 validation checks: no duplicates, referential integrity, churn rates 65-70%, dates valid, flags standardised
 
 **Phase 3 (Leakage Prevention):**
-- Assert: 0 post-churn records in final dataset (224 removed in this step)
+- Assert: 0 post-churn records in final dataset (230 removed in this step)
 - Assert: All activity records use week_commencing < churn_date for churned customers
 
 **Phase 4 (Features):**

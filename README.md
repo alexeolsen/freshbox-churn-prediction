@@ -7,7 +7,7 @@ An end-to-end machine learning pipeline for predicting customer churn in a food 
 ```
 freshbox-churn-prediction/
 ├── data/
-│   ├── raw/                 # 4 raw CSV files (1,500 customers sampled, scales to 8,000 base; 57.2K activity records, 2.1K support tickets)
+│   ├── raw/                 # 4 raw CSV files (1,500 customers, 57.2K activity records, 2.1K support tickets)
 │   └── processed/           # Engineered features (1,500 customers × 49 features, parquet format)
 ├── src/
 │   ├── shared/              # Phase 0: Shared utilities (data loading, model training, metrics)
@@ -101,7 +101,7 @@ python test/phase_8/phase_8_1_test_model_comparison.py
 All phases generate CSV exports for transparency and auditability:
 
 - **Phase 2:** Data cleaning (fixed 12 anomalies, standardised dates/flags)
-- **Phase 3:** Leakage prevention (removed 224 post-churn records)
+- **Phase 3:** Leakage prevention (removed 230 post-churn records)
 - **Phase 4:** Feature engineering (47 features across 6 categories)
 - **Phase 5:** Train/test split (1,200 train, 300 test) + heuristic baseline
 - **Phase 6:** Logistic regression predictions & coefficients

@@ -8,11 +8,11 @@ This document explains how the raw FreshBox data was processed, cleaned, and val
 
 ## Executive Summary
 
-**The Challenge:** Raw FreshBox data arrives with 8,000 customers across 4 CSV files, but contains data quality issues and logical inconsistencies that would mislead any machine learning model if not corrected.
+**The Challenge:** Raw FreshBox sample data contains 1,500 customers across 4 CSV files (scales to ~8,000 production base), but contains data quality issues and logical inconsistencies that would mislead any machine learning model if not corrected.
 
 **What We Found:**
 - 12 customers with impossible churn dates (before signup date)
-- 224 post-churn activity records (129 activity, 95 support tickets) that would create "data leakage"
+- 230 post-churn activity records (131 activity, 99 support tickets) that would create "data leakage"
 - Mixed date formats requiring standardisation
 - Boolean flags stored as text strings ('Y'/'N')
 
@@ -25,7 +25,7 @@ Applied a rigorous 6-step preparation pipeline to clean, validate, and prepare d
 | **Step 2** | Convert 4 boolean flags (Y/N → True/False) | Cleaner downstream filtering |
 | **Step 3** | Fix 12 churn date anomalies | Zero impossible dates remain |
 | **Step 4** | Run 5 data validation checks | All checks pass (no duplicates, referential integrity intact) |
-| **Step 5** | Filter 224 post-churn records | CRITICAL: prevents model from "seeing the future" |
+| **Step 5** | Filter 230 post-churn records | CRITICAL: prevents model from "seeing the future" |
 | **Step 6** | Validate no leakage remains | Zero post-churn records in final dataset |
 
 **The Result:**
@@ -35,7 +35,7 @@ Applied a rigorous 6-step preparation pipeline to clean, validate, and prepare d
 - **Ready for modelling:** Dataset passed all quality gates and is production-ready
 
 **Why This Matters:**
-Data preparation is not glamorous but is absolutely critical. The effort spent here (identifying and fixing 12 anomalies, removing 224 leakage records) directly determines whether the final model will be accurate in production. A model trained on dirty data will make wrong predictions on dirty data. By investing in rigorous preparation, we ensure that the logistic regression and XGBoost models built in Phases 6-7 have a solid, trustworthy foundation.
+Data preparation is not glamorous but is absolutely critical. The effort spent here (identifying and fixing 12 anomalies, removing 230 leakage records) directly determines whether the final model will be accurate in production. A model trained on dirty data will make wrong predictions on dirty data. By investing in rigorous preparation, we ensure that the logistic regression and XGBoost models built in Phases 6-7 have a solid, trustworthy foundation.
 
 ### Key Limitations
 
@@ -47,7 +47,7 @@ This data preparation process achieves high data quality within the boundaries o
 | **No external data sources** | Cannot incorporate macro factors (economy, seasonality, competitor moves, market events) that influence churn | Feature engineering anchored to FreshBox-controlled factors (engagement, satisfaction, friction) |
 | **Assumptions in anomaly fixes** | 12 records with churn_date < signup_date set to same-day churn (conservative, but not verified) | Recommend spot-checking with operations team; low frequency (0.2% of base) limits impact |
 | **Feature engineering limited to available data** | Cannot engineer features from data FreshBox doesn't collect (e.g., delivery sentiment, competitor pricing, household income) | Current 47 features cover the most predictive signals FreshBox does capture; future instrumentation could improve |
-| **Leakage prevention removes signal** | Filtering post-churn activity (224 records) is necessary but removes some temporal information | Trade-off is intentional: model integrity (no future leakage) vs perfect signal (acceptable because majority of churn behavior occurs pre-churn) |
+| **Leakage prevention removes signal** | Filtering post-churn activity (230 records) is necessary but removes some temporal information | Trade-off is intentional: model integrity (no future leakage) vs perfect signal (acceptable because majority of churn behavior occurs pre-churn) |
 | **Data quality dependent on upstream systems** | If upstream systems (activity logging, support ticket creation) have gaps, features will be incomplete | Validation checks catch most anomalies; monitoring for data quality degradation should be ongoing |
 | **Single customer cohort** | Dataset represents FreshBox's full customer base; insights may not generalise to new customer segments or acquisition channels | New customer segments should be tested separately; model retraining recommended if acquisition strategy changes significantly |
 
@@ -112,9 +112,9 @@ The project uses four raw CSV files loaded from `data/raw/`:
 
 | File | Type | Rows | Purpose |
 |------|------|------|---------|
-| `freshbox_dim_customers.csv` | Dimension | 8,000 | Customer master: signup dates, churn flags, churn dates, segment flags |
-| `freshbox_fact_weekly_activity.csv` | Fact | 156,000 | Weekly order activity: orders placed, items ordered, delivery performance per customer per week |
-| `freshbox_fact_support_tickets.csv` | Fact | 2,100 | Support tickets: issues raised, resolution status, ticket dates per customer |
+| `freshbox_dim_customers.csv` | Dimension | 1,500 | Customer master: signup dates, churn flags, churn dates, segment flags (sample data) |
+| `freshbox_fact_weekly_activity.csv` | Fact | 57,208 | Weekly order activity: orders placed, items ordered, delivery performance per customer per week |
+| `freshbox_fact_support_tickets.csv` | Fact | 2,093 | Support tickets: issues raised, resolution status, ticket dates per customer |
 | `freshbox_445_calendar.csv` | Reference | 445 | Retail 4-4-5 calendar: week boundaries for aggregation consistency |
 
 ---
@@ -185,11 +185,11 @@ Five automated checks run sequentially to catch data quality issues. Each check 
 
 | Check | Validation Rule | Status | Detail |
 |-------|-----------------|--------|--------|
-| 1 — Duplicate Customers | No duplicate `customer_id` values in customers table | **PASS** | 8,000 unique customer IDs |
-| 2 — Duplicate Tickets | No duplicate `ticket_id` values in support_tickets table | **PASS** | 2,100 unique ticket IDs |
-| 3 — Referential Integrity | Every `customer_id` in weekly_activity and support_tickets must exist in customers table | **PASS** | All 8,000 IDs in activity, all 1,450 in tickets mapped successfully |
-| 4 — Churn Date Logic | After anomaly fix, all churned customers have `churn_date >= signup_date` | **PASS** | All 5,360 churned customers satisfy this rule |
-| 5 — Churn Rate Sanity | Overall churn rate should be 65–70% (per business brief) | **PASS** | Observed 67.3% (5,360 / 8,000) |
+| 1 — Duplicate Customers | No duplicate `customer_id` values in customers table | **PASS** | 1,500 unique customer IDs |
+| 2 — Duplicate Tickets | No duplicate `ticket_id` values in support_tickets table | **PASS** | 2,093 unique ticket IDs |
+| 3 — Referential Integrity | Every `customer_id` in weekly_activity and support_tickets must exist in customers table | **PASS** | All 1,500 IDs in activity, all 1,037 in tickets mapped successfully |
+| 4 — Churn Date Logic | After anomaly fix, all churned customers have `churn_date >= signup_date` | **PASS** | All 1,011 churned customers satisfy this rule |
+| 5 — Churn Rate Sanity | Overall churn rate should be 65–70% (per business brief) | **PASS** | Observed 67.4% (1,011 / 1,500) |
 
 **Note:** Checks 1–4 are hard assertions (pipeline halts on failure). Check 5 is a soft warning (failure logs a warning but allows continuation).
 
@@ -211,11 +211,11 @@ For every churned customer, all activity and support ticket records dated **on o
 
 | Group | Action | Records Before | Records Removed | Records After |
 |-------|--------|-----------------|-----------------|----------------|
-| **Weekly Activity (churned customers)** | Keep only `week_commencing < churn_date` | 28,100 | 129 | 27,971 |
-| **Weekly Activity (active customers)** | Keep all records | 127,900 | 0 | 127,900 |
-| **Support Tickets (churned customers)** | Keep only `ticket_date < churn_date` | 1,200 | 95 | 1,105 |
-| **Support Tickets (active customers)** | Keep all records | 900 | 0 | 900 |
-| **TOTAL RECORDS REMOVED** | — | — | **224** | — |
+| **Weekly Activity (churned customers)** | Keep only `week_commencing < churn_date` | 13,941 | 131 | 13,810 |
+| **Weekly Activity (active customers)** | Keep all records | 43,267 | 0 | 43,267 |
+| **Support Tickets (churned customers)** | Keep only `ticket_date < churn_date` | 1,684 | 99 | 1,585 |
+| **Support Tickets (active customers)** | Keep all records | 409 | 0 | 409 |
+| **TOTAL RECORDS REMOVED** | — | — | **230** | — |
 
 **Spot-Check Verification:**
 The pipeline verifies the first 5 churned customers by checking their remaining records — zero post-churn rows exist for any of them.
@@ -241,9 +241,9 @@ Both assertions are hard (pipeline halts if either fails). This step never fails
 | **Date columns standardised** | 8 columns | `pd.to_datetime()` | Enables date arithmetic and filtering |
 | **Boolean flags standardised** | 4 columns | `== 'Y'` comparison | Cleaner downstream filtering |
 | **Churn date anomalies fixed** | 12 customer records | Set `churn_date = signup_date` | Removes logical impossibilities |
-| **Post-churn activity removed** | 129 weekly_activity rows | Date filter: `< churn_date` | Prevents data leakage |
-| **Post-churn tickets removed** | 95 support_ticket rows | Date filter: `< churn_date` | Prevents data leakage |
-| **TOTAL RECORDS REMOVED** | **224 rows** | — | **0.14% of all fact records** |
+| **Post-churn activity removed** | 131 weekly_activity rows | Date filter: `< churn_date` | Prevents data leakage |
+| **Post-churn tickets removed** | 99 support_ticket rows | Date filter: `< churn_date` | Prevents data leakage |
+| **TOTAL RECORDS REMOVED** | **230 rows** | — | **0.40% of all fact records** |
 
 ---
 
