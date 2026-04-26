@@ -7,7 +7,7 @@ An end-to-end machine learning pipeline for predicting customer churn in a food 
 ```
 freshbox-churn-prediction/
 ├── data/
-│   ├── raw/                 # 4 raw CSV files (8,000 customers, 156K activity records, 2.1K support tickets)
+│   ├── raw/                 # 4 raw CSV files (1,500 customers sampled, scales to 8,000 base; 57.2K activity records, 2.1K support tickets)
 │   └── processed/           # Engineered features (1,500 customers × 49 features, parquet format)
 ├── src/
 │   ├── shared/              # Phase 0: Shared utilities (data loading, model training, metrics)

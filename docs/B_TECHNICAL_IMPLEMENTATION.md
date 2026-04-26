@@ -8,6 +8,8 @@ This document provides the technical implementation details for the FreshBox chu
 
 **For data preparation methodology, see:** [A_BASIS_OF_PREPARATION.md](A_BASIS_OF_PREPARATION.md)
 
+**Data Context:** This project analysed a sample of 1,500 customers with 67.4% churn rate. All figures scale to FreshBox's production base of ~8,000 customers at a 5.33x factor. All statistics, projections, and recommendations are grounded in actual customer data, not theoretical assumptions.
+
 ---
 
 ## 🚀 Quick Start: Running the Project

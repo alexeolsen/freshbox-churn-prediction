@@ -40,7 +40,9 @@ This document outlines the commercial case, operational framework, and business 
 
 | Item | Value | Basis |
 |------|-------|-------|
-| **Annual churn customers** | 5,360 | 67% of 8,000 base |
+| **Sample customers** | 1,500 | Actual data analysed (scales to ~8,000 production base at 5.33x factor) |
+| **Churn rate** | 67.4% | Verified from actual data (1,011 churned customers) |
+| **Annual churn customers** | 5,360 | Projected from 67.4% of 8,000 base |
 | **Customer Lifetime Value (LTV)** | GBP 400 | Calculated from actual customer spend (avg 12.79 weeks @ £29/order) |
 | **Annual revenue loss to churn** | GBP 2.14M | 5,360 × GBP 400 |
 | **Weekly churners** | ~103 customers | 5,360 ÷ 52 weeks |
