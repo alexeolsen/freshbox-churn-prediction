@@ -27,7 +27,7 @@ freshbox-churn-prediction/
 │   └── phase_op/            # Operational framework execution
 ├── outputs/
 │   ├── data/                # 21 CSV exports (data lineage at each phase)
-│   ├── figures/             # 4 PNG visualizations (ROC, PR, SHAP curves)
+│   ├── figures/             # 4 PNG visualisations (ROC, PR, SHAP curves)
 │   └── models/              # (Placeholder for serialized models)
 ├── scripts/
 │   ├── phase_9_1_create_presentation.py  # Presentation deck generation
@@ -186,4 +186,4 @@ Refer to the documentation files in `docs/` for:
 
 **Author:** Created for technical interview & code review  
 **Last Updated:** April 2025  
-**Data:** FreshBox (anonymized customer dataset)
+**Data:** FreshBox (anonymised customer dataset)

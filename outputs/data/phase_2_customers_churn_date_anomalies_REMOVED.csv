@@ -1,0 +1,13 @@
+customer_id,signup_date,signup_fiscal_year,signup_fiscal_week,signup_fiscal_month,acquisition_channel,initial_discount_pct,referral_flag,age_band,household_size,region,dietary_preference,plan_type,meals_per_week,weekly_price_gbp,churned,churn_date
+FB-00027,2024-01-26,FY2024,4,FY2024-M01,Influencer,59,False,25-34,4,London,Vegan,3-person,7,82.21,True,2024-01-24
+FB-00087,2023-09-17,FY2023,37,FY2023-M09,Influencer,41,False,35-44,1,Midlands,Classic,2-person,4,33.35,True,2023-09-14
+FB-00166,2024-05-16,FY2024,20,FY2024-M05,Paid social,66,False,35-44,2,North,Classic,2-person,4,35.7,True,2024-05-14
+FB-00415,2025-10-09,FY2025,41,FY2025-M10,Affiliate,49,True,25-34,1,Midlands,Veggie,3-person,10+,103.84,True,2025-10-08
+FB-00431,2024-11-14,FY2024,46,FY2024-M11,Organic search,33,False,45-54,1,North,Classic,4-person+,5,68.22,True,2024-11-12
+FB-00433,2024-02-08,FY2024,6,FY2024-M02,TV/brand,6,False,25-34,2,London,Pescatarian,2-person,4,31.92,True,2024-02-07
+FB-00559,2024-08-07,FY2024,32,FY2024-M08,Influencer,49,False,25-34,2,Scotland,Classic,1-person,7,37.38,True,2024-08-06
+FB-00652,2024-04-20,FY2024,16,FY2024-M04,Affiliate,60,False,35-44,2,Midlands,Family-friendly,4-person+,7,93.34,True,2024-04-18
+FB-01158,2025-05-01,FY2025,18,FY2025-M05,Paid social,62,False,35-44,3,Scotland,Classic,2-person,6,53.31,True,2025-04-28
+FB-01245,2024-06-22,FY2024,25,FY2024-M06,Influencer,42,False,18-24,2,South East,Family-friendly,2-person,6,50.1,True,2024-06-20
+FB-01449,2023-11-18,FY2023,46,FY2023-M11,TV/brand,23,False,55+,2,Midlands,Veggie,4-person+,6,75.11,True,2023-11-16
+FB-01467,2025-01-22,FY2025,4,FY2025-M01,Influencer,58,False,35-44,1,Midlands,Classic,4-person+,6,85.2,True,2025-01-20
