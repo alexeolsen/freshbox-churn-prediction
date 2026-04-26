@@ -305,7 +305,7 @@ The model identifies four distinct customer types for targeted retention tactics
 | **Year 2+** | ~5,000 | 250-400 | GBP 100-160K | GBP 50K | GBP 50-110K | **2-3.2X** |
 
 **Notes:**
-- LTV corrected to £400 based on actual customer data (avg churn at 12.79 weeks, £29 AOV)
+- LTV corrected to £400 based on actual customer data (avg churn at 12.79 weeks, 8.82 orders @ £45.37 AOV)
 - Year 2+ assumes continued model investment (retraining, monitoring, incremental improvements)
 - Churners decline due to product improvements informed by churn drivers (flywheel effect)
 - ROI compounds as machine learning captures increasingly nuanced patterns

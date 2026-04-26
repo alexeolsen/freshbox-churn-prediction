@@ -104,7 +104,7 @@ PHASE 9: Presentation Deck (scripts/phase_9_1_create_presentation.py)
 ### Why Logistic Regression for Phase 1?
 
 **Business rationale:**
-- GBP 400 LTV per customer (based on actual churn data: avg 12.79 weeks @ £29 AOV); missing 1 churner costs GBP 400
+- GBP 400 LTV per customer (based on actual churn data: avg 12.79 weeks, 8.82 orders @ £45.37 AOV); missing 1 churner costs GBP 400
 - GBP 50 retention effort per false positive; 1 false positive costs GBP 50
 - Net impact of 1 extra false positive = GBP 50 cost vs GBP 400 saved by catching 1 extra churner
 - Logistic catches 200 of 202 churners; XGBoost catches all 202 but flags 4 extra false positives
