@@ -287,16 +287,16 @@ The clean dataset produced by data preparation (1,500 customers with zero data l
 
 ### Features Created
 
-Phase 4 transforms the cleaned transaction and support data into **47 predictive features** organised around **4 churn hypotheses**:
+Phase 4 transforms the cleaned transaction and support data into **47 predictive features** organised around **6 categories**:
 
-| Hypothesis | Features | Count | Example Signals |
-|-----------|----------|-------|-----------------|
-| **Loyalty Matters** | Tenure, order history, completion rate | 4 features | Customers who've ordered more have lower churn risk |
-| **Recent Momentum Matters** | Frequency trend, rating trend, recency | 6 features | A sharp drop in order frequency is a leading churn signal |
-| **Satisfaction Matters** | Average ratings, rating engagement, diversity | 5 features | Low meal ratings predict churn (product fit issue) |
-| **Friction Matters** | Support tickets, delivery complaints, resolution time | 4 features | Customers with unresolved issues churn more |
-| **Economic Signals** | Discount dependency, price sensitivity | 4 features | Heavy discount users are more price-sensitive and churn-prone |
-| **Demographics** | Acquisition channel, region, household size, diet type | 8 categorical features | Certain channels/regions have different churn profiles |
+| Category | Features | Count | Example Signals |
+|----------|----------|-------|-----------------|
+| **Loyalty** | Tenure, order history, completion rate, tickets per month | 8 features | Customers who've ordered more have lower churn risk |
+| **Momentum** | Frequency trend, rating trend, early vs late behaviour | 4 features | A sharp drop in order frequency is a leading churn signal |
+| **Satisfaction** | Average ratings, rating engagement, recipe diversity | 5 features | Low meal ratings predict churn (product fit issue) |
+| **Friction** | Support tickets, delivery complaints, resolution time | 3 features | Customers with unresolved issues churn more |
+| **Economic** | Discount dependency, price sensitivity, weekly price | 4 features | Heavy discount users are more price-sensitive and churn-prone |
+| **Demographics** | Acquisition channel, region, household size, diet type (one-hot encoded) | 23 features | Certain channels/regions have different churn profiles |
 
 ### Why This Matters
 

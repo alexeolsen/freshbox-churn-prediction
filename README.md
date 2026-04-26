@@ -143,16 +143,16 @@ Access all exports in `outputs/data/`.
 
 ## 🎯 Features Engineered
 
-47 features across 4 churn hypotheses:
+47 features across 6 categories:
 
-| Hypothesis | Count | Examples |
-|-----------|-------|----------|
-| **Loyalty** | 4 | tenure_weeks, total_orders, order_completion_rate |
-| **Momentum** | 6 | frequency_trend, late_avg_rating, rating_trend |
-| **Satisfaction** | 5 | avg_recipe_rating, rating_engagement_rate, menu_customisation_rate |
-| **Friction** | 4 | total_tickets, delivery_complaints, avg_resolution_days |
-| **Economic** | 4 | discount_dependency_rate, avg_discount_pct |
-| **Demographics** | 8 | acquisition_channel, age_band, region, plan_type (one-hot encoded) |
+| Category | Count | Examples |
+|----------|-------|----------|
+| **Loyalty** | 8 | tenure_weeks, total_orders, order_completion_rate, tickets_per_tenure_month |
+| **Momentum** | 4 | frequency_trend, late_avg_rating, rating_trend, early_avg_rating |
+| **Satisfaction** | 5 | avg_recipe_rating, rating_engagement_rate, menu_customisation_rate, lifetime_recipes_rated |
+| **Friction** | 3 | total_tickets, delivery_complaints, avg_resolution_days |
+| **Economic** | 4 | discount_dependency_rate, avg_discount_pct, initial_discount_pct, weekly_price_gbp |
+| **Demographics** | 23 | acquisition_channel (5), age_band (4), region (5), dietary_preference (4), plan_type (3), household_size, meals_per_week (one-hot encoded) |
 
 All features derived from FreshBox's existing data — no new instrumentation required.
 
