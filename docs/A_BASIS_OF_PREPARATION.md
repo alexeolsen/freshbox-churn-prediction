@@ -761,22 +761,19 @@ This phase answers four questions:
 
 | Item | Value |
 |------|-------|
-| **Customer Lifetime Value (LTV)** | ~GBP 1,500 per customer |
-| **Retention Cost per Contact** | ~GBP 50 (1:1 phone call or special offer) |
-| **Cost of a Missed Churner** | GBP 1,500 (lost LTV) |
-| **Cost of a False Positive** | GBP 50 (retention effort wasted) |
+| **Customer Lifetime Value (LTV)** | GBP 400 per customer |
+
+**Model Comparison:**
 
 **Logistic vs Heuristic:**
 - Catches **53 additional churners** (200 vs 147)
-- Creates **1 fewer false alarm** than heuristic (−35 false positives)
-- Net benefit: **53 × GBP 1,500 − 36 × GBP 50 = GBP 77,700 year 1**
-- **Verdict:** Logistic is a clear upgrade; F1 improvement (0.764 → 0.993) is massive
+- Creates **1 fewer false alarm** than heuristic
+- **Verdict:** Logistic is a clear upgrade; F1 improvement (0.764 → 0.993) is significant
 
 **XGBoost vs Logistic:**
 - Catches **2 additional churners** (202 vs 200)
-- Creates **3 additional false alarms** (+3 false positives)
-- Net benefit: **2 × GBP 400 − 3 × GBP 50 = GBP 650 year 1**
-- **Verdict:** XGBoost upgrade is small benefit; justifiable only if retention team capacity exists for slightly higher volume and perfect recall is critical
+- Trade-off: **3 additional false positives** for perfect recall
+- **Verdict:** XGBoost upgrade justifiable only if perfect recall is critical and team capacity exists for higher volume
 
 ### Two-Phase Deployment Recommendation
 

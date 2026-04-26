@@ -104,19 +104,15 @@ PHASE 9: Presentation Deck (scripts/phase_9_1_create_presentation.py)
 ### Why Logistic Regression for Phase 1?
 
 **Business rationale:**
-- GBP 400 LTV per customer (based on actual churn data: avg 12.79 weeks, 8.82 orders @ £45.37 AOV); missing 1 churner costs GBP 400
-- GBP 50 retention effort per false positive; 1 false positive costs GBP 50
-- Net impact of 1 extra false positive = GBP 50 cost vs GBP 400 saved by catching 1 extra churner
-- Logistic catches 200 of 202 churners; XGBoost catches all 202 but flags 4 extra false positives
-- Cost of Logistic approach: 2 churners × GBP 400 = GBP 800 loss
-- Cost of XGBoost approach: 3 extra contacts × GBP 50 = GBP 150 cost
-- **Savings: GBP 650 in Year 1 by using Logistic first**
+- Logistic regression catches 200 of 202 churners with 99.5% precision
+- XGBoost achieves 100% recall but with 3 extra false positives
+- Logistic model provides the best balance of accuracy and interpretability for Phase 1
 
 **Technical rationale:**
 - **Interpretability:** Every prediction is explainable via coefficient. Retention team understands exactly why each customer is flagged
 - **Speed:** Logistic inference: <1ms per customer vs XGBoost: ~10ms per customer
 - **Model size:** Logistic <50KB vs XGBoost ~5MB
-- **Infrastructure:** Logistic can run on CPU; XGBoost benefits from GPU (cost/complexity trade-off)
+- **Infrastructure:** Logistic can run on CPU; XGBoost benefits from GPU for faster inference
 - **Auditability:** Logistic coefficients can be documented, versioned, audited for compliance
 
 ### Why XGBoost for Phase 2?
@@ -263,7 +259,7 @@ Delivery: Rank by probability → Hand to retention team (Tier 1/2/3 by risk sco
 | **Inference time (XGBoost)** | ~10ms per customer | 80,000 × 10ms = 800 seconds (13 minutes) |
 | **Model size (logistic)** | <50KB | Fits in memory; no special hardware needed |
 | **Model size (XGBoost)** | ~5MB | GPU beneficial but CPU acceptable |
-| **Batch scoring frequency** | Weekly (Monday) | Balances freshness vs infrastructure cost |
+| **Batch scoring frequency** | Weekly (Monday) | Balances freshness and operational reliability |
 
 ### Fallback & Recovery
 
